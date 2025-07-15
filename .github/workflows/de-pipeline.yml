@@ -1,0 +1,34 @@
+name: DE ETL Pipeline
+
+on:
+  push:
+    paths:
+      - 'scripts/**'"Path to your actual Python script in the repo"
+  workflow_dispatch:
+
+jobs:
+  run-de-pipeline:
+    runs-on: ubuntu-latest
+
+    env:
+      AZURE_STORAGE_ACCOUNT_NAME: ${{ secrets.AZURE_STORAGE_ACCOUNT_NAME }}
+      AZURE_STORAGE_ACCOUNT_KEY: ${{ secrets.AZURE_STORAGE_ACCOUNT_KEY }}
+      AZURE_CONTAINER_NAME: ${{ secrets.AZURE_CONTAINER_NAME }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          pip install azure-storage-blob
+
+      - name: Run ETL Script
+        run: |
+          python scripts/run_de_etl.py
