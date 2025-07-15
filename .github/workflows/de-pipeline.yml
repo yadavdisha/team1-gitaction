@@ -3,7 +3,7 @@ name: DE ETL Pipeline
 on:
   push:
     paths:
-      - 'scripts/**'"Path to your actual Python script in the repo"
+      - 'scripts/**'
   workflow_dispatch:
 
 jobs:
