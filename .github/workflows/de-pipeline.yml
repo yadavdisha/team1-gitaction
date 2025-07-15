@@ -6,6 +6,7 @@ on:
       - 'scripts/**'
   workflow_dispatch:
 
+
 jobs:
   run-de-pipeline:
     runs-on: ubuntu-latest
