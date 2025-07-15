@@ -3,7 +3,7 @@ name: DE ETL Pipeline
 on:
   push:
     paths:
-      - 'scripts/**'
+      - 'mock2025-team1-data-engineer/scripts/**'
   workflow_dispatch:
 
 
@@ -26,9 +26,8 @@ jobs:
           python-version: '3.10'
 
       - name: Install dependencies
-        run: |
-          pip install -r requirements.txt
-          pip install azure-storage-blob
+        run: pip install -r mock2025-team1-data-engineer/requirements.txt
+
 
       - name: Run ETL Script
         run: |
